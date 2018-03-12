@@ -1,0 +1,31 @@
+2018-03-10 02:12:26 UTC::@:[3887]:LOG:  received fast shutdown request
+2018-03-10 02:12:26 UTC::@:[3887]:LOG:  aborting any active transactions
+2018-03-10 02:12:26 UTC::@:[3908]:LOG:  autovacuum launcher shutting down
+2018-03-10 02:12:26 UTC::@:[3905]:LOG:  shutting down
+2018-03-10 02:12:26 UTC::@:[3905]:LOG:  checkpoint starting: shutdown immediate
+2018-03-10 02:12:26 UTC::@:[3905]:LOG:  checkpoint complete: wrote 36 buffers (0.0%); 0 transaction log file(s) added, 0 removed, 0 recycled; write=0.007 s, sync=0.002 s, total=0.065 s; sync files=31, longest=0.002 s, average=0.000 s; distance=8723 kB, estimate=8723 kB
+2018-03-10 02:12:26 UTC::@:[3887]:LOG:  database system is shut down
+2018-03-10 02:12:28 UTC::@:[5348]:LOG:  database system was shut down at 2018-03-10 02:12:26 UTC
+2018-03-10 02:12:28 UTC::@:[5348]:LOG:  MultiXact member wraparound protections are now enabled
+2018-03-10 02:12:28 UTC::@:[5352]:LOG:  autovacuum launcher started
+2018-03-10 02:12:28 UTC::@:[5346]:LOG:  database system is ready to accept connections
+2018-03-10 02:12:28 UTC:[local]:[unknown]@[unknown]:[5360]:LOG:  connection received: host=[local]
+2018-03-10 02:12:39 UTC:localhost(64395):[unknown]@[unknown]:[5379]:LOG:  connection received: host=localhost port=64395
+2018-03-10 02:12:39 UTC:localhost(64395):rdsadmin@rdsadmin:[5379]:LOG:  connection authorized: user=rdsadmin database=rdsadmin
+2018-03-10 02:12:41 UTC:localhost(64397):[unknown]@[unknown]:[5461]:LOG:  connection received: host=localhost port=64397
+2018-03-10 02:12:41 UTC:localhost(64397):rdsadmin@rdsadmin:[5461]:LOG:  connection authorized: user=rdsadmin database=rdsadmin
+2018-03-10 02:13:09 UTC::@:[5349]:LOG:  checkpoint starting: force wait
+2018-03-10 02:13:10 UTC::@:[5349]:LOG:  checkpoint complete: wrote 2 buffers (0.0%); 0 transaction log file(s) added, 0 removed, 0 recycled; write=0.213 s, sync=0.000 s, total=0.224 s; sync files=2, longest=0.000 s, average=0.000 s; distance=16384 kB, estimate=16384 kB
+2018-03-10 02:18:09 UTC::@:[5349]:LOG:  checkpoint starting: time
+2018-03-10 02:18:09 UTC::@:[5349]:LOG:  checkpoint complete: wrote 1 buffers (0.0%); 0 transaction log file(s) added, 0 removed, 0 recycled; write=0.108 s, sync=0.002 s, total=0.120 s; sync files=1, longest=0.002 s, average=0.002 s; distance=16384 kB, estimate=16384 kB
+2018-03-10 02:20:37 UTC:localhost(64423):[unknown]@[unknown]:[9999]:LOG:  connection received: host=localhost port=64423
+2018-03-10 02:20:37 UTC:localhost(64423):rdsadmin@template1:[9999]:LOG:  connection authorized: user=rdsadmin database=template1
+2018-03-10 02:20:37 UTC:localhost(64425):[unknown]@[unknown]:[10000]:LOG:  connection received: host=localhost port=64425
+2018-03-10 02:20:37 UTC:localhost(64425):rdsadmin@template0:[10000]:LOG:  connection authorized: user=rdsadmin database=template0
+2018-03-10 02:20:37 UTC:localhost(64427):[unknown]@[unknown]:[10001]:LOG:  connection received: host=localhost port=64427
+2018-03-10 02:20:37 UTC:localhost(64427):rdsadmin@postgres:[10001]:LOG:  connection authorized: user=rdsadmin database=postgres
+2018-03-10 02:20:37 UTC:localhost(64429):[unknown]@[unknown]:[10002]:LOG:  connection received: host=localhost port=64429
+2018-03-10 02:20:37 UTC:localhost(64429):rdsadmin@rdsadmin:[10002]:LOG:  connection authorized: user=rdsadmin database=rdsadmin
+2018-03-10 02:20:37 UTC:localhost(64431):[unknown]@[unknown]:[10003]:LOG:  connection received: host=localhost port=64431
+2018-03-10 02:23:10 UTC::@:[5349]:LOG:  checkpoint starting: time
+2018-03-10 02:23:16 UTC::@:[5349]:LOG:  checkpoint complete: wrote 60 buffers (0.0%); 0 transaction log file(s) added, 0 removed, 0 recycled; write=6.181 s, sync=0.002 s, total=6.241 s; sync files=55, longest=0.002 s, average=0.000 s; distance=16627 kB, estimate=16627 kB

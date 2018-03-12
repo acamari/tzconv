@@ -1,0 +1,134 @@
+.\"	$OpenBSD: mdoc.template,v 1.15 2014/03/31 00:09:54 dlg Exp $
+.\"
+.\" Copyright (c) 2018 Abel Abraham Camarillo Ojeda <acamari@verlet.org>
+.\"
+.\" Permission to use, copy, modify, and distribute this software for any
+.\" purpose with or without fee is hereby granted, provided that the above
+.\" copyright notice and this permission notice appear in all copies.
+.\"
+.\" THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+.\" WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+.\" MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+.\" ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+.\" WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+.\" ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+.\" OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\"
+.Dd March 12, 2018
+.Dt TZCONV 1
+.Os
+.Sh NAME
+.Nm tzconv
+.Nd time zone conversion
+.Sh SYNOPSIS
+.Nm
+.Op Fl F Ns Ar inputfmt
+.Op Fl f Ns Ar inputtz
+.Op Fl T Ns Ar outputfmt
+.Op Fl t Ns Ar outputtz
+.Op Ar
+.Sh DESCRIPTION
+The
+.Nm
+utility reads the specified files, or the standard input if no files are
+specified, converting timestamps in the input matched according to the
+.Fl F
+and
+.Fl f
+options.
+The converted input is then written to standard output according to the
+.Fl T
+and
+.Fl t
+options.
+.Pp
+The options are as follows:
+.Bl -tag -width Ds
+.It Fl F Ar inputfmt
+Parse input timestamp according to
+.Ar inputfmt
+which must be an
+.Xr strptime 3
+accepted string.
+If missing the default format
+.Cm %Y-%m-%d %H:%M:%S %Z
+is used.
+.It Fl f Ar inputtz
+Parse input timestamp localized in the
+.Ar inputtz
+time zone.
+If missing the current time zone is used.
+.It Fl T Ar outputfmt
+Parse output timestamp according to
+.Ar outputfmt
+which must be an
+.Xr strftime 3
+accepted string.
+If missing the default format
+.Cm %Y-%m-%d %H:%M:%S %Z
+is used.
+.It Fl t Ar outputtz
+Parse output timestamp localized in the
+.Ar outputtz
+time zone.
+If missing the current time zone is used.
+.El
+.Pp
+If the input line has data after the
+.Ar inputfmt
+is parsed, its printed verbatim to output.
+.Sh ENVIRONMENT
+.Bl -tag -width Ds
+.It Ev TZ
+See
+.Xr tzset 3 .
+.Sh FILES
+.Bl -tag -width "/usr/share/zoneinfo" -compact
+.It Pa /usr/share/zoneinfo
+time zone information directory
+.It Pa /etc/localtime
+local time zone file
+.El
+.Sh EXIT STATUS
+.Ex -std
+.Sh EXAMPLES
+To verify timestamp are correct for the
+.Cm Z
+(UTC) time zone:
+
+.Bd -literal
+	$ printf "%s\en" "2018-01-30 00:00:00 UTC: stuff" | \e
+		tzconv -fZ -tZ && echo line is ok
+2018-01-30 00:00:00 GMT: stuff
+line is ok
+.Ed
+.Pp
+Now with bogus timestamp (there is no day 32):
+.Bd -literal
+	$ printf "%s\en" "2018-01-32 00:00:00 UTC: stuff" | \e
+		tzconv -fZ -tZ || echo line is not ok
+2018-01-32 00:00:00 UTC: stuff
+line is not ok
+.Ed
+.Pp
+Convert from UTC to New_York timezone:
+.Bd -literal
+	$ printf "%s\en" "2018-01-32 00:00:00 UTC: stuff" | \e
+		tzconv -fZ -tAmerica/New_York && echo line is ok
+2018-01-29 19:00:00 EST: stuff
+line is ok
+.Ed
+
+.Sh SEE ALSO
+.Xr mktime 3 ,
+.Xr strptime 3 ,
+.Xr strftime 3 ,
+.Xr tzset 3
+.Sh AUTHORS
+.An Abel Abraham Camarillo Ojeda Aq Mt acamari@verlet.org
+.Sh CAVEATS
+Currently prints input lines not matching
+.Ar inputfmt
+verbatim to output, returning with >0 exit status.
+There might be a user selectable option to choose behaviour for
+this in a future version.
