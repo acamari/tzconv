@@ -1,0 +1,1 @@
+* ignore all TZ conversions when both -f and -t are missing
